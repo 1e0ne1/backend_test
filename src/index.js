@@ -1,5 +1,6 @@
 const express = require('express');
 const {credential, addCredential, getKey} = require('./models/credential');
+const { getMessage, getMessagesByTag, addMessage} = require( './models/message');
 const auth = require('./middleware/auth')
 
 const app = express();
@@ -23,14 +24,19 @@ app.put('/credential', (req, res) => {
 });
 
 app.post('/message', auth, (req, res) => {
-    
-    res.send('testing post message!');
+    const {msg, tags } = req.body;
+    const id = addMessage(msg, tags);
+    if(id.length > 0) {
+        return res.status(200).send({id});
+    }
+
+    res.status(400).send();
 });
 
 app.get('/message/:id', auth, (req, res) => {
-    res.send('gettin messages with id:' + req.params.id);
+    res.send(getMessage(req.params.id));
 });
 
 app.get('/messages/:tag', auth, (req, res) => {
-    res.send('get all the tag messages');
+    res.send(getMessagesByTag(req.params.tag));
 });

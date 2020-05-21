@@ -13,8 +13,13 @@ const auth = async (req, res, next) => {
         const { shared } = getKey(key)[0]; //obtain secret_shared key
 
         const datasigned = route + ";" + bodyParams + ";" + urlParams;
+        console.log(datasigned);
+
+        const newSignature = jwt.sign(datasigned, shared);
+        console.log(newSignature);
         
         const decoded = jwt.verify(signature, shared);
+        
         
         if(decoded !== datasigned){
             throw new Error();
