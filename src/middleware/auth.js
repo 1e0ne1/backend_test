@@ -19,7 +19,7 @@ const auth = async (req, res, next) => {
         console.log(newSignature);
         
         const decoded = jwt.verify(signature, shared);
-        
+        // console.log(decoded);
         
         if(decoded !== datasigned){
             throw new Error();

@@ -8,7 +8,7 @@ router.put('/credential', (req, res) => {
     if(getKey(key).length > 0){ //if key exists send code 403
         return res.status(403).send(); 
     }
-
+    console.log(req.body);
     addCredential(key, shared); //if key doesnt exist add it
     res.status(204).send(); //send 204 code
 });

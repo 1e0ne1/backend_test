@@ -7,7 +7,8 @@ router.post('/message', auth, (req, res) => {
     const {msg, tags } = req.body;
     const id = addMessage(msg, tags);
     if(id.length > 0) {
-        return res.status(200).send({id});
+        console.log(id);
+        return res.status(200).send(id);
     }
 
     res.status(400).send();
