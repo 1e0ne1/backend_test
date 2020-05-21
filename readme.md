@@ -12,12 +12,13 @@ This project is about message storage with authentication. Before storing messag
         |- routers
         |- index.js (main file)
 
-**backend**: Developed in NodeJs, using Express.js. Other NPM modules:
+## backend: Developed in NodeJs, using Express.js. Other NPM modules:
     - **UUID:** Package for unique id 
     - **JSON Web Token:** Package for authenticate. It provides encryption unsing HMAC-SHA256.
     - **NODEMON:** Package for update changes in development.
 
-**Usage:** You can start the backend server with the command "npm run dev" that will start server on port 3000. You can go to the following urls:
+## Usage: 
+You can start the backend server with the command "npm run dev" that will start server on port 3000. You can go to the following urls:
     - **CREDENTIALS:** You can go to *http://localhost:3000/credential* and create a new credential by using the following parameters:
         **METHOD:** PUT
         **BODY:** Key and Shared Secret.
@@ -67,4 +68,17 @@ This project is about message storage with authentication. Before storing messag
         |- index.php (main file)
 
 
+## Usage:
+
+    Open in your browser the following URL "http://localhost:8080" this will start the web application. You will get a form and you must enter your credentials (key and secret shared). This credentials will allow you to enter the application.
+
+    If you enter correctly your credentials you will get to the main page. Here you can perform the following actions:
     
+    1. Create messages: You must enter the message body and the tags related. The system will take your credentials and will perform the encryption automatically. You will get an unique id that the server assigns to the message created.
+    2. View messages: When you create a message a link will appear in the main page. You can click it in order to visualize its content.
+    3. Search messages: Enter to the menu "Search Messages" located in the top menu. You will be redirected to the search page. Here you can enter a single tag that will be sent to the server and you will get back all the matched messages for this respective tag.
+    4. Logout: This will delete your credentials, and all the messages created.
+
+## Future fixes:
+    1. Styling: This web app does not have any style applied. For future releases this will be fixed.
+    2. Sanitize data: Currently this security feature is not implemented. 

@@ -3,10 +3,12 @@
 if(isset($_POST['key']) && isset($_POST['secret'])){
     $key = $_POST['key'];
     $shared = $_POST['secret'];
-    if(setCredentials($key, $shared)){
-        $_SESSION['key'] = $key;
-        $_SESSION['shared'] = $shared;
-        header('location: index.php');
+    if($key !== "" || $shared !== ""){
+        if(setCredentials($key, $shared)){
+            $_SESSION['key'] = $key;
+            $_SESSION['shared'] = $shared;
+            header('location: index.php');
+        }
     }
 
 }
