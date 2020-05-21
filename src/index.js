@@ -31,6 +31,6 @@ app.get('/message/:id', auth, (req, res) => {
     res.send('gettin messages with id:' + req.params.id);
 });
 
-app.get('/messages/:tag', (req, res) => {
+app.get('/messages/:tag', auth, (req, res) => {
     res.send('get all the tag messages');
 });
