@@ -6,8 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+<?php if(keys_set()){ ?>
     <nav>
         <a href="/">Home</a>
         <a href="/?page=search">Search Message</a>
         <a href="/?action=logout">Logout</a>
     </nav>
+<?php } ?>
