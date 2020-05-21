@@ -8,12 +8,6 @@
     }
 ?>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/?page=search">Search Message</a>
-    <a href="/?action=logout">Logout</a>
-</nav>
-
 <div>
     <form action="" method="post">
         <input type="text" name="msj" placeholder="mensaje">
@@ -29,9 +23,8 @@
         foreach($tokens as $id => $token){
             $curToken = $tokens[$id];
             ?>
-            <a href="<?php echo "?id=$curToken"; ?>"><?php echo $curToken; ?></a>
-            <?php 
-            
+            <p><a href="<?php echo "?id=$curToken"; ?>"><?php echo $curToken; ?></a></p>
+            <?php         
         }
         
     ?>
@@ -42,8 +35,10 @@
         <h2>Message Requested</h2>
         <?php 
             $id = $_GET['id'];
-            $message = getMessage("message/:id", "{}", json_encode(array("id" => $id)), $id); 
-            print_r($message);
+            $message = json_decode(getMessage("message/:id", "{}", json_encode(array("id" => $id)), $id), true); 
             ?>
+            <p><b>ID: </b><?php echo $message[0]['id'] ?></p>
+            <p><b>Message: </b><?php echo $message[0]['msg'] ?></p>
+            <p><b>Tags: </b><?php print_r($message[0]['tags']); ?></p>
     <?php } ?>
 </div>

@@ -6,3 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/?page=search">Search Message</a>
+        <a href="/?action=logout">Logout</a>
+    </nav>

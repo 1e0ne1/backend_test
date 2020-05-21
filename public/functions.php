@@ -129,4 +129,37 @@
         
     }
     
+    function getMessagesByTag($url, $bodyParams, $urlParams, $tag){
+        
+        $key = $_SESSION['shared'];
+        
+        $payload=$url.";".$bodyParams.";".$urlParams;
+        $jwt = JWT::encode($payload, $key);
+
+        $curl = curl_init();
+        
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://localhost:3000/messages/".$tag,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "Content-Type:application/json",
+                "X-Key: ".$_SESSION['key'],
+                "X-Route: ".$url,
+                "X-Signature: ".$jwt
+            ),
+            CURLOPT_POSTFIELDS => $bodyParams,
+        ));
+
+        $response = curl_exec($curl);
+                
+        curl_close($curl);
+
+        return $response;
+        
+    }
 ?>

@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
         console.log(datasigned);
 
         const newSignature = jwt.sign(datasigned, shared);
-        console.log(newSignature);
+        // console.log(newSignature);
         
         const decoded = jwt.verify(signature, shared);
         // console.log(decoded);
